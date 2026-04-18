@@ -188,3 +188,38 @@ function setupProjectControls() {
 
 // Run the function after the page content is fully loaded
 document.addEventListener("DOMContentLoaded", setupProjectControls);
+
+
+// Function to handle dark/light mode and save the user's choice
+function setupThemeToggle() {
+    const themeButton = document.getElementById("theme-toggle");
+
+    // Stop if button is not found
+    if (!themeButton) return;
+
+    // Check saved theme in localStorage
+    const savedTheme = localStorage.getItem("theme");
+
+    // Apply saved theme when page loads
+    if (savedTheme === "dark") {
+        document.body.classList.add("dark-mode");
+        themeButton.textContent = "Light Mode";
+    }
+
+    // Toggle theme when button is clicked
+    themeButton.addEventListener("click", () => {
+        document.body.classList.toggle("dark-mode");
+
+        // Save current theme and update button text
+        if (document.body.classList.contains("dark-mode")) {
+            localStorage.setItem("theme", "dark");
+            themeButton.textContent = "Light Mode";
+        } else {
+            localStorage.setItem("theme", "light");
+            themeButton.textContent = "Dark Mode";
+        }
+    });
+}
+
+// Run after page loads
+document.addEventListener("DOMContentLoaded", setupThemeToggle);

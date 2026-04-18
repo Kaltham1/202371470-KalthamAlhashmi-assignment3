@@ -106,7 +106,7 @@
     margin-bottom: 2rem;
 }
 
-span {
+.h span {
     color: var(--color2);
 }
 
@@ -242,7 +242,7 @@ span {
 }
 .proj-content h2{
     margin-top: 100px;
-    margin-left: 100px;
+    text-align: center;
 }
 .item{
     display: inline-flex;
@@ -411,4 +411,97 @@ span {
 .projects-list {
     display: flex;
     flex-wrap: wrap;
+}
+
+/* Theme toggle button */
+.theme-btn {
+    padding: 0.6rem 1rem;
+    border: 2px solid white;
+    border-radius: 8px;
+    background: transparent;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.theme-btn:hover {
+    background: white;
+    color: black;
+}
+
+/* Dark mode styles */
+body.dark-mode {
+    background-color: #121212;
+    color: white;
+}
+
+/* Header */
+body.dark-mode .header {
+    background: #1f1f1f;
+}
+
+/* Text colors */
+body.dark-mode .navbar a,
+body.dark-mode .logo,
+body.dark-mode .kfupm,
+body.dark-mode .media a,
+body.dark-mode .hcontent h1,
+body.dark-mode .hcontent h3,
+body.dark-mode .abt-content,
+body.dark-mode .card-title,
+body.dark-mode .card-text,
+body.dark-mode .contact h2,
+body.dark-mode .h {
+    color: white;
+}
+
+/* Section backgrounds (VERY IMPORTANT FIX) */
+body.dark-mode .abt-me,
+body.dark-mode .contact,
+body.dark-mode .projects,
+body.dark-mode .github-section {
+    background: #1e1e1e;
+}
+
+/* Project cards */
+body.dark-mode .item {
+    background: #1e1e1e;
+    color: white;
+    border-color: var(--color2);
+}
+
+/* Form inputs */
+body.dark-mode .contact form input,
+body.dark-mode .contact form textarea {
+    background: #1e1e1e;
+    color: white;
+    border-color: var(--color2);
+}
+
+/* Dropdowns */
+body.dark-mode .project-controls select {
+    background: #1e1e1e;
+    color: white;
+    border: 2px solid var(--color2);
+}
+
+/* GitHub cards */
+body.dark-mode .repo-card {
+    background: #1e1e1e;
+    color: white;
+}
+
+body.dark-mode .repo-card h3,
+body.dark-mode .repo-card p,
+body.dark-mode .repo-meta,
+body.dark-mode .repo-card a {
+    color: white;
+}
+
+/* Buttons */
+body.dark-mode .btn,
+body.dark-mode .theme-btn {
+    color: white;
+    border-color: white;
 }

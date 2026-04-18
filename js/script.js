@@ -131,3 +131,60 @@ async function loadGitHubRepos() {
 
 // Run function when page loads
 document.addEventListener("DOMContentLoaded", loadGitHubRepos);
+
+
+// Function to handle filtering and sorting of project cards
+function setupProjectControls() {
+    // Get elements from the page
+    const filterSelect = document.getElementById("filter-projects");
+    const sortSelect = document.getElementById("sort-projects");
+    const projectsList = document.querySelector(".projects-list");
+
+    // If elements are not found, stop execution (prevents errors)
+    if (!filterSelect || !sortSelect || !projectsList) return;
+
+    // Convert NodeList of project cards into an array
+    const projectCards = Array.from(projectsList.querySelectorAll(".item"));
+
+    // Function that updates the displayed projects
+    function updateProjects() {
+        // Get current user selections
+        const selectedCategory = filterSelect.value;
+        const selectedSort = sortSelect.value;
+
+        // Step 1: Filter projects based on selected category
+        let visibleProjects = projectCards.filter(card => {
+            const category = card.dataset.category;
+
+            // Show all if "all" is selected, otherwise match category
+            return selectedCategory === "all" || category === selectedCategory;
+        });
+
+        // Step 2: Sort projects by date
+        visibleProjects.sort((a, b) => {
+            const dateA = new Date(a.dataset.date);
+            const dateB = new Date(b.dataset.date);
+
+            // If "newest", show latest first, otherwise oldest first
+            return selectedSort === "newest" ? dateB - dateA : dateA - dateB;
+        });
+
+        // Step 3: Clear current project display
+        projectsList.innerHTML = "";
+
+        // Step 4: Re-add filtered and sorted projects to the page
+        visibleProjects.forEach(card => {
+            projectsList.appendChild(card);
+        });
+    }
+
+    // Event listeners: run update when user changes options
+    filterSelect.addEventListener("change", updateProjects);
+    sortSelect.addEventListener("change", updateProjects);
+
+    // Initial run when page loads
+    updateProjects();
+}
+
+// Run the function after the page content is fully loaded
+document.addEventListener("DOMContentLoaded", setupProjectControls);

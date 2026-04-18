@@ -386,3 +386,29 @@ span {
     font-size: 0.9rem;
     margin-top: 0.5rem;
 }
+
+/* Project controls (filter + sort) */
+.project-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+    margin: 2rem 0 1rem 100px;
+}
+
+.project-controls label {
+    font-weight: 600;
+}
+
+.project-controls select {
+    padding: 0.6rem;
+    border: 2px solid var(--color2);
+    border-radius: 8px;
+    background: white;
+}
+
+/* Projects container (keeps your current layout) */
+.projects-list {
+    display: flex;
+    flex-wrap: wrap;
+}
